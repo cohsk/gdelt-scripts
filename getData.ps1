@@ -13,8 +13,9 @@ foreach($line in Get-Content ".\$masterFile"){
   if ($lines -gt $startAt){
     $lineArray = $line.split(" ")
     $url = $lineArray[2]
-    $output = ".\$lineArray[0].zip"
-    Start-BitsTransfer -Source $url -Destination $output
+    $myLineArray = $url.split("/")
+    $output = $myLineArray[4]
+    Start-BitsTransfer -Source $url -Destination ".\$output"
   }
 }
 echo $lines
