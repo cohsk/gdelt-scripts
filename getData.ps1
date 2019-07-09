@@ -5,7 +5,7 @@ Import-Module BitsTransfer
 $masterFile = "masterfilelist.txt"
 $webMasterFile = "http://data.gdeltproject.org/gdeltv2/masterfilelist.txt"
 $output = ".\$masterFile"
-$startAt = 453000
+$startAt = 450000
 cd ~\Downloads
 Start-BitsTransfer -Source $webMasterFile -Destination $output
 $lines = 0
