@@ -4,7 +4,7 @@ Import-Module BitsTransfer
 $masterFile = "masterfilelist.txt"
 $webMasterFile = "http://data.gdeltproject.org/gdeltv2/masterfilelist.txt"
 $output = ".\$masterFile"
-$startAt = 454650
+$startAt = 453000
 cd ~\Downloads
 Start-BitsTransfer -Source $webMasterFile -Destination $output
 $lines = 0
@@ -15,7 +15,7 @@ foreach($line in Get-Content ".\$masterFile"){
     $url = $lineArray[2]
     $myLineArray = $url.split("/")
     $output = $myLineArray[4]
-    Start-BitsTransfer -Source $url -Destination ".\$output"
+    Start-BitsTransfer -Source $url -Destination "z:$output"
   }
 }
 echo $lines
