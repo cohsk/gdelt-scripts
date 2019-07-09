@@ -1,5 +1,6 @@
 # a script to pull down gdelt data
 # see gdeltproject.org for details
+# .\getData.ps1 > output.txt 2>&1
 Import-Module BitsTransfer
 $masterFile = "masterfilelist.txt"
 $webMasterFile = "http://data.gdeltproject.org/gdeltv2/masterfilelist.txt"
