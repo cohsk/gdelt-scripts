@@ -5,7 +5,9 @@ Import-Module BitsTransfer
 $masterFile = "masterfilelist.txt"
 $webMasterFile = "http://data.gdeltproject.org/gdeltv2/masterfilelist.txt"
 $output = ".\$masterFile"
-$startAt = 450000
+$totalLines = Get-Content -Path ".\$masterFile" | Measure-Object -Line
+$sample = 4000
+$startAt = $totalLines.Lines - $sample
 cd ~\Downloads
 Start-BitsTransfer -Source $webMasterFile -Destination $output
 $lines = 0
@@ -20,6 +22,8 @@ foreach($line in Get-Content ".\$masterFile"){
     $output = $myLineArray[4]
     echo $output
     Start-BitsTransfer -Source $url -Destination "z:$output"
+    $comp = (1 - (($totalLines - $lines)/$sample)) * 100
+    Write-Progress -Id 1 -Activity Updating -Status 'Progress' -PercentComplete $comp -CurrentOperation Downloads
   }
 }
 echo $lines
