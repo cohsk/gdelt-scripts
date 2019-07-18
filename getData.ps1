@@ -5,7 +5,8 @@ Import-Module BitsTransfer
 $masterFile = "masterfilelist.txt"
 $webMasterFile = "http://data.gdeltproject.org/gdeltv2/masterfilelist.txt"
 $output = ".\$masterFile"
-$totalLines = Get-Content -Path ".\$masterFile" | Measure-Object -Line
+$myLines = Get-Content -Path ".\$masterFile" | Measure-Object -Line
+$totalLines = $myLines.Line
 $sample = 4000
 $startAt = $totalLines.Lines - $sample
 cd ~\Downloads
